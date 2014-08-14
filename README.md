@@ -49,3 +49,9 @@ Install and debug iPhone apps without using Xcode. Designed to work on unjailbro
 Device Ids are the UDIDs of the iOS devices. From the command line, you can list device ids [this way](http://javierhz.blogspot.com/2012/06/how-to-get-udid-of-iphone-using-shell.html):
 
         system_profiler SPUSBDataType | sed -n -e '/iPad/,/Serial/p' -e '/iPhone/,/Serial/p' | grep "Serial Number:" | awk -F ": " '{print $2}'
+
+## Deploying and running on multiple devices
+
+There is also a bash script to extract an ipa, then deploy and run the app on multiple devices. Currently, ios-deploy is used to install the app, and Apple's instruments command line interface is used to launch it with an emtpy automation script. This is pretty hacky, but seems to be working for now.
+
+	`./ILiOSDeployWrapper.sh app.ipa [Optionally - a device id if you only want to run on one device]
